@@ -29,8 +29,10 @@ def build_reserved_keys():
 
     return reserved_keys
 
-    
+
 def main():
     file_ptr = open_file()
     reserved_keys = build_reserved_keys()
     file_ptr.close()
+
+main()
