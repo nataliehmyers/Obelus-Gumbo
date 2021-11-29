@@ -6,7 +6,7 @@ def open_file():
         try:
             file_name = input("Please enter the file name: ")
             file_ptr = open(file_name, "r")
-            return file_name
+            return file_ptr
         except:
             print("Unable to open file, please enter valid file path.")
 
@@ -32,13 +32,19 @@ def build_reserved_keys():
     return reserved_keys
 
 #Identify each 'word' in file
+#BUG: Program does not accurately split '(', ')', ,'"'
+#TODO: Change program to go through character by character, or find a more robust way to split the line
 def identify_keys(file_ptr, reserved_keys):
 
     for line in file_ptr:
         new_line = line.split()  #Splits into a list, each element is a 'word'
+        print(new_line) #For testing only, REMOVE BEFORE RELEASE
         for element in new_line:
+            #Element is a comment, can discard rest of line
+            if element in reserved_keys[5]:
+                continue
             #Element is a reserved word (if/else)
-            if element in reserved_keys[0]:
+            elif element in reserved_keys[0]:
                 continue
             #Element is a reserved loop
             elif element in reserved_keys[1]:
@@ -52,10 +58,7 @@ def identify_keys(file_ptr, reserved_keys):
             #Element is a reserved conditional statement
             elif element in reserved_keys[4]:
                 continue
-            #Element is a comment
-            elif element in reserved_keys[5]:
-                continue
-            #Element is either a variable/value, or will result in a syntax error
+            #Element is either a variable/value/function call, or will result in a syntax error
             else:
                 continue
 
@@ -64,6 +67,7 @@ def main():
     while True:
         file_ptr = open_file()
         reserved_keys = build_reserved_keys()
+        identify_keys(file_ptr,reserved_keys)
         file_ptr.close()
         user_result = input("Would you like to run another file (Y/N? ")
         if(user_result.upper()=="N"):
