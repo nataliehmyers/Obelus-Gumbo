@@ -1,4 +1,4 @@
-
+import shlex
 
 #Opens the file and returns the file pointer
 def open_file():
@@ -9,6 +9,22 @@ def open_file():
             return file_ptr
         except:
             print("Unable to open file, please enter valid file path.")
+
+def spaceChar(line):
+    line = spaceChars(line, '(')
+    line = spaceChars(line, ')')
+    line = spaceChars(line, '+')
+    line = spaceChars(line, '/')
+    line = spaceChars(line, ':')
+    line = spaceChars(line, '%')
+    return line
+
+def spaceChars(line, char):
+    num = line.count(char)
+    for i in range(0, num):
+        index = line.index(char, i)
+        line = line[:index]+' '+line[index]+' '+line[(index+1):]
+    return line
 
 #reserved_keys keeps track of important words and characters in python
 def build_reserved_keys():
@@ -37,7 +53,11 @@ def build_reserved_keys():
 def identify_keys(file_ptr, reserved_keys):
 
     for line in file_ptr:
-        new_line = line.split()  #Splits into a list, each element is a 'word'
+        #old way
+        #new_line = line.split()  #Splits into a list, each element is a 'word'
+        #new way
+        spacedLine = spaceChar(line)
+        new_line = shlex.split(spacedLine)
         print(new_line) #For testing only, REMOVE BEFORE RELEASE
         for element in new_line:
             #Element is a comment, can discard rest of line
@@ -69,7 +89,7 @@ def main():
         reserved_keys = build_reserved_keys()
         identify_keys(file_ptr,reserved_keys)
         file_ptr.close()
-        user_result = input("Would you like to run another file (Y/N? ")
+        user_result = input("Would you like to run another file (Y/N?) ")
         if(user_result.upper()=="N"):
             break
 
