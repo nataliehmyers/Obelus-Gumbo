@@ -4,6 +4,11 @@
 
 grammar PythonParserGrammar;
 
+tokens {
+    INDENT,
+    DEDENT
+}
+
 @header {
     package antlr;
 }
@@ -18,7 +23,7 @@ statement: whileloop
     ;
 
 //variable definitions
-assignment: VAR assignop value;
+assignment: VAR assignop value NEWLINE;
 
 assignop: math EQUALS
     | EQUALS
@@ -37,7 +42,17 @@ string: QUOTE STRINGVALUE QUOTE
     ;
 
 //if/else blocks
+ifelse: IF condition COLON indentblock elifblock* elseblock
+    ;
 
+indentblock: NEWLINE INDENT statement+ DEDENT
+    ;
+
+elifblock: ELIF condition COLON indentblock
+    ;
+
+elseblock: ELSE indentblock
+    ;
 
 //for loops
 
@@ -81,12 +96,17 @@ conditional: EQUALTO
     ;
 
 //comments
-//TODO: find a way to ignore the rest of the line after a comment
+//TODO: find a way to ignore the rest of the line after comment token
 comment: COMMENT 
     ;
 
 // ---------------- TOKENS --------------------
 //make sure token doesn't already exist before adding it
+
+//if
+IF: 'if';
+ELSE: 'else';
+ELIF: 'elif';
 
 //loops
 WHILE: 'while';
@@ -125,5 +145,6 @@ NOTEQUALTO: '!=';
 AND: 'and';
 OR: 'or';
 
-//other
+//structure
 COMMENT: '#';
+NEWLINE: ('\r\n'|'\n'|'\r');
