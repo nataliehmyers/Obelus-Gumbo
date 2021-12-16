@@ -1,6 +1,6 @@
 # Obelus-Gumbo
 
-Final Project for Principles of Programming Languages. This program uses a custom grammar and implements a parser for python 3.x. The user enters in a path to a python file, and the program will output a parse tree.
+This is our Parser Project for CMP_SC 4450 Principles of Programming Languages. This program uses a custom grammar and implements a parser for python 3.x. The user enters in a path to a python file, and the program will output a parse tree.
 
   ## Team Members
 
@@ -13,11 +13,11 @@ Final Project for Principles of Programming Languages. This program uses a custo
 
 # Dependencies (Getting Set Up)
 
-1.  [ANTLR](https://www.antlr.org/)
+1.  [ANTLR](https://www.antlr.org/) as our parser generator
 
-2.  [shlex](https://docs.python.org/3/library/shlex.html)
+2.  [shlex](https://docs.python.org/3/library/shlex.html) as our lexical analyzer
 
-3.  [Python 3.7+](https://www.python.org/downloads/)
+3.  [Python 3.7+](https://www.python.org/downloads/) as our programming language
 
   
 
@@ -30,3 +30,9 @@ Final Project for Principles of Programming Languages. This program uses a custo
 3. Program will output results
 
 4. Enter another file path (If user wants to rerun program)
+
+
+
+# Demo
+
+Coming soon...
