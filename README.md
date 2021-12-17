@@ -1,5 +1,7 @@
 # Obelus-Gumbo
 
+![alt text](https://cdn.discordapp.com/attachments/905938357627011124/921231134380138536/antlr4_parse_tree_1.png)
+
 This is our Parser Project for CMP_SC 4450 Principles of Programming Languages. This program uses a custom grammar and implements a parser for python 3.x. The user enters in a path to a python file, and the program will output a parse tree.
 
   ## Team Members
