@@ -22,7 +22,7 @@ This is our Parser Project for CMP_SC 4450 Principles of Programming Languages. 
 
 # Instructions
 
-1. TDB
+1. Run main.py
 
 2. Enter in a valid file path (Relative file path)
 
