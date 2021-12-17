@@ -29,8 +29,7 @@ This is our Parser Project for CMP_SC 4450 Principles of Programming Languages. 
 4. Enter another file path (If user wants to rerun program)
 
 
-https://drive.google.com/file/d/1K_aEYN8qtUWU-f7UPoEE-PQVQH52UUeS/view?usp=sharing
 
 # Demo
 
-Coming soon...
+https://drive.google.com/file/d/1K_aEYN8qtUWU-f7UPoEE-PQVQH52UUeS/view?usp=sharing
