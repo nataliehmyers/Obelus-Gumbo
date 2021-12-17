@@ -15,15 +15,13 @@ This is our Parser Project for CMP_SC 4450 Principles of Programming Languages. 
 
 1.  [ANTLR](https://www.antlr.org/) as our parser generator
 
-2.  [shlex](https://docs.python.org/3/library/shlex.html) as our lexical analyzer
-
-3.  [Python 3.7+](https://www.python.org/downloads/) as our programming language
+2.  [Python 3.7+](https://www.python.org/downloads/) as our programming language
 
   
 
 # Instructions
 
-1. Run main.py
+1. TDB
 
 2. Enter in a valid file path (Relative file path)
 
