@@ -9,7 +9,10 @@ tokens {INDENT,  DEDENT}
 prog: (statement)+ EOF;
 
 
-statement: (assignment | fncstatement|flow) NEWLINE |ctrlstatement NEWLINE | NEWLINE;
+statement: 
+    (assignment | fncstatement|flow) NEWLINE
+    |ctrlstatement NEWLINE | NEWLINE
+    ;
 assignment: IDENTIFIER assignop expression;
 fncstatement:IDENTIFIER'('expression (','expression)*')';
 flow: 'break' | 'continue';
@@ -20,16 +23,18 @@ whileloop: 'while' condition ':' iblock;
 iblock: NEWLINE statement+ ;
 comparator: '==' | '>' | '<'| '>=' | '<=' | '!=' | 'and' | 'not' ;
 condition: expression (comparator expression)*
+    | '('expression comparator expression')'
     | tf
     ;
 
 expression:
-      expression((math)expression)+
+    expression((math)expression)+
+    | fncstatement
     | IDENTIFIER
     | '('expression')'
     | num
     | string
-    | fncstatement
+    
     ;
     
 
@@ -98,7 +103,7 @@ SKIP_
 IDENTIFIER: [a-zA-Z_]+[a-zA-Z0-9_]*;
 
 //data types
-INT: [0-9][0-9]*;
+INT: '-'?[0-9][0-9]*;
 FLOAT: [1-9][0-9]*'.'[0-9]+;
 QUOTE: '"';
 STRINGVALUE: '"'.+?'"';
